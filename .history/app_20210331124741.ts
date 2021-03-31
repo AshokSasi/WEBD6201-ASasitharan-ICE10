@@ -8,7 +8,7 @@ import mongoose = require('mongoose');
 
 // configuration
 const indexRouter = require('./Routes/index');
-const app = express();
+export const app = express();
 
 //DB Configuraion
 import DBConfig = require('./Config/db');
@@ -50,4 +50,4 @@ app.use(function(err:createError.HttpError, req:express.Request, res:express.Res
   res.render('error', {message: message, error:error, title: '', page: ''});
 });
 
-module.exports = app;
+//module.exports = app;

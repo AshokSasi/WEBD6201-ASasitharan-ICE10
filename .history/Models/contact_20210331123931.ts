@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+const  Schema  = mongoose.Schema;
 
 const ContactSchema = new Schema({
     FullName:String,
@@ -10,7 +10,7 @@ const ContactSchema = new Schema({
 {
     collection:"contacts"
 });
-export const Model = mongoose.model("Contact", ContactSchema);
 
+const Model = mongoose.model("Contact", ContactSchema);
 
-
+module.exports.Model = Model;

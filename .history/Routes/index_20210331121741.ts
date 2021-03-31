@@ -3,8 +3,8 @@ import express = require('express');
 const router = express.Router();
 
 //Contact Model
-import ContactModel = require("../Models/contact");
-const Contact = ContactModel.Model; //Contact Alias
+const ContactModel = require("../Models/contact");
+const Contact = ContactModel.Model;
 
 /* GET home page - with / */
 router.get('/', function(req, res, next) 
@@ -66,16 +66,6 @@ router.get('/register', function(req, res, next)
 router.get('/contact-list', function(req, res, next) 
 {
    // res.render('index', { title: 'Contact List', page: 'contact-list', displayName: 'temp'  });
-
-  Contact.find(function(err,contacts){
-    if(err)
-    {
-      return console.error(err);
-    }
-    console.log(contacts);
-    res.json(contacts);
-  });
-
 });
 
 /* GET login page - with /login */
