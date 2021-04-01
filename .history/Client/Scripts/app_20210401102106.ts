@@ -155,6 +155,10 @@ namespace core
             // hide any error message
             messageArea.removeAttr("class").hide();
 
+            // redirect user to secure area - contact-list.html
+            //loadLink("contact-list");
+            //location.href = '/contact-list';
+
             $("form").trigger("submit");
           }
           else
@@ -170,8 +174,8 @@ namespace core
       {
         // clear the login form
         document.forms[0].reset();
-        
         // return to the home page
+        //loadLink("home");
         location.href = '/home';
       });
     }
@@ -182,7 +186,46 @@ namespace core
         location.href = '/login';
     }
 
-    
+    /* function toggleLogin(): void
+    {
+      let contactListLink = $("#contactListLink")[0]; // makes a reference to the contact-list link
+
+      // if user is logged in
+      if(sessionStorage.getItem("user"))
+      { //Logged in -----------------------
+
+        // swap out the login link for logout
+        $("#loginListItem").html(
+        `<a id="logout" class="nav-link" aria-current="page"><i class="fas fa-sign-out-alt"></i> Logout</a>`
+        );
+
+        if(!contactListLink) // checks if contact-list link is not already present
+        {
+          // add contact-list link
+          $(`<li id="contactListLink" class="nav-item">
+          <a id="contact-list" class="nav-link" aria-current="page"><i class="fas fa-users fa-lg"></i> Contact List</a>
+        </li>`).insertBefore("#loginListItem");
+        }
+      }
+      else
+      { // Logged out-----------------------
+
+        // swap out the login link for logout
+        $("#loginListItem").html(
+          `<a id="login" class="nav-link" aria-current="page"><i class="fas fa-sign-in-alt"></i> Login</a>`
+          );
+          
+        if(contactListLink) // checks if contact-list link is present
+        {
+          // remove contact-list link
+          $("#contactListLink").remove();
+        }
+
+      }
+
+      //addLinkEvents();
+      //highlightActiveLink(router.ActiveLink);
+    } */
 
     function authGuard():void
     {
@@ -199,7 +242,31 @@ namespace core
 
     }
 
-   
+    /**
+     * This function associates and returns a related callback to a route
+     *
+     * @param {string} activeLink
+     * @returns {Function}
+     */
+    /* function ActiveLinkCallBack(activeLink:string): Function
+    {
+      switch (activeLink) 
+      {
+        case "home": return displayHome;
+        case "about": return displayAbout;
+        case "projects": return displayProjects;
+        case "services": return displayServices;
+        case "contact": return displayContact;
+        case "contact-list": return displayContactList;
+        case "edit": return displayEdit;
+        case "login": return displayLogin;
+        case "register": return displayRegister;
+        case "404": return display404;
+        default:
+          console.error("ERROR: callback does not exist: " + activeLink);
+          break;
+      }
+    } */
 
     /**
      * This is the entry point for our program
@@ -207,13 +274,23 @@ namespace core
      */
     function Start(): void
     {
-     
+        //loadHeader(router.ActiveLink);
+      
+        //loadContent(router.ActiveLink, ActiveLinkCallBack(router.ActiveLink));
+
+        //loadFooter();
+
         let pageID = $("body")[0].getAttribute("id");
         
       switch (pageID) {
-       case 'edit':
-         displayEdit();
-         break;
+        case 'home':
+          break;
+        case 'about':
+          break;
+        case 'services':
+          break;
+        case 'projects':
+          break;
         case 'contact':
           displayContact();
           break;

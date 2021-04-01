@@ -211,9 +211,14 @@ namespace core
         let pageID = $("body")[0].getAttribute("id");
         
       switch (pageID) {
-       case 'edit':
-         displayEdit();
-         break;
+        case 'home':
+          break;
+        case 'about':
+          break;
+        case 'services':
+          break;
+        case 'projects':
+          break;
         case 'contact':
           displayContact();
           break;

@@ -199,7 +199,31 @@ namespace core
 
     }
 
-   
+    /**
+     * This function associates and returns a related callback to a route
+     *
+     * @param {string} activeLink
+     * @returns {Function}
+     */
+    /* function ActiveLinkCallBack(activeLink:string): Function
+    {
+      switch (activeLink) 
+      {
+        case "home": return displayHome;
+        case "about": return displayAbout;
+        case "projects": return displayProjects;
+        case "services": return displayServices;
+        case "contact": return displayContact;
+        case "contact-list": return displayContactList;
+        case "edit": return displayEdit;
+        case "login": return displayLogin;
+        case "register": return displayRegister;
+        case "404": return display404;
+        default:
+          console.error("ERROR: callback does not exist: " + activeLink);
+          break;
+      }
+    } */
 
     /**
      * This is the entry point for our program
@@ -207,13 +231,23 @@ namespace core
      */
     function Start(): void
     {
-     
+        //loadHeader(router.ActiveLink);
+      
+        //loadContent(router.ActiveLink, ActiveLinkCallBack(router.ActiveLink));
+
+        //loadFooter();
+
         let pageID = $("body")[0].getAttribute("id");
         
       switch (pageID) {
-       case 'edit':
-         displayEdit();
-         break;
+        case 'home':
+          break;
+        case 'about':
+          break;
+        case 'services':
+          break;
+        case 'projects':
+          break;
         case 'contact':
           displayContact();
           break;
