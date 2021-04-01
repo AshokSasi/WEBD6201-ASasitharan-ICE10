@@ -87,43 +87,39 @@ router.get('/contact-list', function(req, res, next)
 
 });
 
-/* Display edit/:id page - with /edit/:id */
+/* display edit page - with /edit:id */
 router.get('/edit/:id', function(req, res, next) 
 {
+
   let id = req.params.id;
-
-  // pass the id to the db
-
-  // db.contacts.find({"_id": id})
-  Contact.findById(id, {}, {}, (err, contactToEdit) =>{
+  Contact.findById(id,{},{},(err,contactToEdit) =>{
     if(err)
     {
       console.error(err);
       res.end(err);
+
     }
 
     // show the edit view
-    res.render('index', { title: 'Edit', page: 'edit', contact: contactToEdit, displayName: '' });
+    res.render('index', { title: 'Edit', page: 'edit', contact: contactToEdit,displayName: ''    });
   });
-  
+
+ 
 });
 
 /* Process edit/:id page - with /edit/:id */
-router.post('/edit/:id', function(req, res, next) 
+router.post('/add', function(req, res, next) 
 {
-  let id = req.params.id;
-
   // instantiate a new Contact
-  let updatedContact = new Contact
+  let newContact = new Contact
   ({
-    "_id": id,
     "FullName": req.body.FullName,
     "ContactNumber": req.body.ContactNumber,
     "EmailAddress": req.body.EmailAddress
   });
 
-  // db.contacts.update({"_id":id} and then update)
-  Contact.updateOne({_id: id}, updatedContact, {}, (err) =>{
+  // db.contacts.insert({contact data is here...})
+  Contact.create(newContact, (err) => {
     if(err)
     {
       console.error(err);
@@ -132,10 +128,8 @@ router.post('/edit/:id', function(req, res, next)
 
     res.redirect('/contact-list');
   });
-  
+
 });
-
-
 
 
 /* display add page - with /add */

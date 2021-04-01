@@ -145,9 +145,27 @@ router.get('/add', function(req, res, next)
 });
 
 /* process add page - with /add */
-router.get('/add', function(req, res, next) 
+router.post('/add', function(req, res, next) 
 {
-  res.redirect('/contact-list');
+  // instantiate a new Contact
+  let newContact = new Contact
+  ({
+    "FullName": req.body.FullName,
+    "ContactNumber": req.body.ContactNumber,
+    "EmailAddress": req.body.EmailAddress
+  });
+
+  // db.contacts.insert({contact data is here...})
+  Contact.create(newContact, (err) => {
+    if(err)
+    {
+      console.error(err);
+      res.end(err);
+    }
+
+    res.redirect('/contact-list');
+  });
+
 });
 
 

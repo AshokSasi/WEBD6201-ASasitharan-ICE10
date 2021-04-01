@@ -64,14 +64,14 @@ router.get('/register', function(req, res, next)
   res.render('index', { title: 'Register', page: 'register', displayName: ''    });
 });
 
-/* GET logout page - with /login */
+/* GET login page - with /login */
 router.get('/logout', function(req, res, next) 
 {
   res.render('index', { title: 'Logout', page: 'logout', displayName: ''    });
 });
 
 /* temporary routes - contact-list related pages */
-/* GET Contact list page - with /contact-list */
+/* GET register page - with /register */
 router.get('/contact-list', function(req, res, next) 
 {
    // 
@@ -87,72 +87,8 @@ router.get('/contact-list', function(req, res, next)
 
 });
 
-/* Display edit/:id page - with /edit/:id */
-router.get('/edit/:id', function(req, res, next) 
-{
-  let id = req.params.id;
-
-  // pass the id to the db
-
-  // db.contacts.find({"_id": id})
-  Contact.findById(id, {}, {}, (err, contactToEdit) =>{
-    if(err)
-    {
-      console.error(err);
-      res.end(err);
-    }
-
-    // show the edit view
-    res.render('index', { title: 'Edit', page: 'edit', contact: contactToEdit, displayName: '' });
-  });
-  
-});
-
-/* Process edit/:id page - with /edit/:id */
-router.post('/edit/:id', function(req, res, next) 
-{
-  let id = req.params.id;
-
-  // instantiate a new Contact
-  let updatedContact = new Contact
-  ({
-    "_id": id,
-    "FullName": req.body.FullName,
-    "ContactNumber": req.body.ContactNumber,
-    "EmailAddress": req.body.EmailAddress
-  });
-
-  // db.contacts.update({"_id":id} and then update)
-  Contact.updateOne({_id: id}, updatedContact, {}, (err) =>{
-    if(err)
-    {
-      console.error(err);
-      res.end(err);
-    }
-
-    res.redirect('/contact-list');
-  });
-  
-});
 
 
 
 
-/* display add page - with /add */
-router.get('/add', function(req, res, next) 
-{
-  res.render('index', { title: 'Add', page: 'edit', displayName: ''    });
-});
 
-/* process add page - with /add */
-router.get('/add', function(req, res, next) 
-{
-  res.redirect('/contact-list');
-});
-
-
-/* process delete:id page - with /delete:id */
-router.get('/delete/:id', function(req, res, next) 
-{
-  res.redirect('/contact-list');
-});
