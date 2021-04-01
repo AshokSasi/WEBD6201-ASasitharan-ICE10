@@ -1,9 +1,9 @@
 //Express Configuration
 import express from 'express';
-export const router = express.Router();
+const router = express.Router();
 
 //Contact Model
-import * as ContactModel from "../Models/contact";
+import ContactModel = require("../Models/contact");
 const Contact = ContactModel.Model; //Contact Alias
 
 /* GET home page - with / */
@@ -86,4 +86,4 @@ router.get('/logout', function(req, res, next)
 
 
 
-
+module.exports = router;
