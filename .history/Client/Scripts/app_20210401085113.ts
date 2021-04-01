@@ -101,7 +101,7 @@ namespace core
       // don't allow visitors to go here
       authGuard();
 
-    /*   if (localStorage.length > 0) 
+      if (localStorage.length > 0) 
       {
 
         let contactList = document.getElementById("contactList");
@@ -153,7 +153,7 @@ namespace core
       {
       //loadLink("edit");
       location.href = '/edit';
-      }); */
+      });
     }
 
     /* function displayEdit(): void
