@@ -139,31 +139,13 @@ router.post('/edit/:id', function(req, res, next)
 /* display add page - with /add */
 router.get('/add', function(req, res, next) 
 {
-  res.render('index', { title: 'Add', page: 'edit', contact:'', displayName: ''    });
+  res.render('index', { title: 'Add', page: 'edit',contact:'', displayName: ''    });
 });
 
 /* process add page - with /add */
 router.post('/add', function(req, res, next) 
 {
-
-  // instantiate a new Contact
-  let newContact = new Contact
-  ({
-    
-    "FullName": req.body.FullName,
-    "ContactNumber": req.body.ContactNumber,
-    "EmailAddress": req.body.EmailAddress
-  });
-
-  Contact.create(newContact,(err)=>{
-    if(err)
-    {
-      console.error(err);
-      res.end(err);
-    }
-    res.redirect('/contact-list');
-  });
-
+  res.redirect('/contact-list');
 });
 
 

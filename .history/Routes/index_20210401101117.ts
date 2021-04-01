@@ -162,6 +162,7 @@ router.post('/add', function(req, res, next)
       res.end(err);
     }
     res.redirect('/contact-list');
+
   });
 
 });
